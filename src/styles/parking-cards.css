@@ -1,15 +1,15 @@
-/* Parking Cards Page Styles - Full Width Desktop Layout */
+/* Parking Cards Page Styles - Professional Desktop First Design */
 .parking-page {
   width: 100%;
   min-height: 100vh;
   background: var(--bg-light);
 }
 
-/* Hero Section - Full Width */
+/* Hero Section - Enhanced Desktop Design */
 .parking-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--gradient-hero);
   width: 100%;
-  padding: 60px 0;
+  padding: 80px 0;
   color: white;
   position: relative;
   overflow: hidden;
@@ -22,8 +22,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-  opacity: 0.3;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.2) 0%, transparent 50%);
+  opacity: 0.6;
+  animation: float 8s ease-in-out infinite;
 }
 
 .hero-content {
@@ -35,28 +39,31 @@
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1.5rem;
   text-align: center;
   animation: fadeInUp 0.8s ease-out;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  opacity: 0.9;
-  margin-bottom: 2.5rem;
+  font-size: 1.375rem;
+  opacity: 0.95;
+  margin-bottom: 3rem;
   text-align: center;
-  max-width: 700px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.6;
+  line-height: 1.7;
   animation: fadeInUp 0.8s ease-out 0.2s both;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Search Container - Desktop Optimized */
+/* Search Container - Professional Desktop Design */
 .search-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   animation: fadeInUp 0.8s ease-out 0.4s both;
 }
@@ -64,35 +71,37 @@
 .search-box {
   position: relative;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  padding: 8px;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  padding: 12px;
   transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .search-box:focus-within {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
 }
 
 .search-icon {
   position: absolute;
-  left: 24px;
+  left: 28px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.2rem;
+  font-size: 1.375rem;
   color: var(--text-light);
   z-index: 2;
 }
 
 .search-input {
   width: 100%;
-  padding: 16px 24px 16px 60px;
+  padding: 20px 28px 20px 70px;
   border: none;
-  border-radius: 12px;
-  font-size: 16px;
+  border-radius: 16px;
+  font-size: 1.125rem;
   background: transparent;
   color: var(--text-dark);
+  font-weight: 500;
 }
 
 .search-input:focus {
@@ -101,17 +110,18 @@
 
 .search-input::placeholder {
   color: var(--text-light);
+  font-weight: 400;
 }
 
 .clear-search {
   position: absolute;
-  right: 20px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   background: var(--bg-light);
   border: none;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -119,17 +129,19 @@
   cursor: pointer;
   color: var(--text-light);
   transition: var(--transition);
+  font-size: 1.125rem;
 }
 
 .clear-search:hover {
   background: var(--error-color);
   color: white;
+  transform: translateY(-50%) scale(1.1);
 }
 
-/* Results Section - Full Width Desktop Layout */
+/* Results Section - Enhanced Desktop Layout */
 .results-section {
   width: 100%;
-  padding: 40px 0 60px;
+  padding: 60px 0 80px;
   background: var(--bg-light);
 }
 
@@ -139,58 +151,19 @@
   padding: 0 2rem;
 }
 
-/* Desktop Grid Layout for Parking Cards */
-.parking-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  margin-top: 2rem;
-  animation: fadeIn 0.6s ease-out;
-}
-
-/* Desktop Results Header - Horizontal Layout */
-.results-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding: 1.5rem 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
-}
-
-.results-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin: 0;
-}
-
-.results-count {
-  color: var(--text-light);
-  font-size: 1rem;
-  background: var(--bg-light);
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--border-light);
-}
-
-/* Loading State */
+/* Loading State - Enhanced */
 .loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .loading-spinner {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border: 4px solid var(--border-light);
   border-radius: 50%;
   border-top-color: var(--primary-color);
@@ -199,27 +172,24 @@
 
 .loading-container p {
   color: var(--text-light);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
-/* Results Section */
-.results-section {
-  padding: 60px 0 100px;
-}
-
+/* Error Banner - Enhanced */
 .error-banner {
-  background: rgba(248, 113, 113, 0.1);
-  border: 1px solid rgba(248, 113, 113, 0.2);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .error-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   flex-shrink: 0;
 }
 
@@ -229,70 +199,81 @@
 
 .error-content h3 {
   color: var(--error-color);
-  font-weight: 600;
-  margin-bottom: 0.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .error-content p {
-  color: var(--text-light);
+  color: var(--text-medium);
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .retry-btn {
   background: var(--error-color);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
 }
 
 .retry-btn:hover {
   background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Results Header */
+/* Results Header - Professional Layout */
 .results-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem 2.5rem;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
   flex-wrap: wrap;
   gap: 1rem;
 }
 
 .results-title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
   color: var(--text-dark);
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .results-count {
   color: var(--text-light);
-  font-size: 1rem;
-  background: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+  font-size: 1.125rem;
+  background: var(--bg-light);
+  padding: 12px 20px;
+  border-radius: 25px;
+  box-shadow: var(--shadow-xs);
   border: 1px solid var(--border-light);
+  font-weight: 600;
 }
 
-/* Parking Grid */
+/* Parking Grid - Enhanced Desktop Layout */
 .parking-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 2.5rem;
   animation: fadeIn 0.6s ease-out;
 }
 
-/* Parking Card */
+/* Parking Card - Professional Design */
 .parking-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-light);
   overflow: hidden;
@@ -300,94 +281,126 @@
   position: relative;
 }
 
+.parking-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: var(--transition);
+}
+
 .parking-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.parking-card:hover::before {
+  opacity: 1;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 1.5rem 0;
+  padding: 2rem 2rem 0;
 }
 
 .card-badge {
   background: var(--gradient-primary);
   color: white;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 25px;
+  font-size: 1.125rem;
+  font-weight: 700;
   box-shadow: var(--shadow-sm);
+  letter-spacing: 0.5px;
 }
 
 .price-tag {
   background: var(--gradient-success);
   color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: 800;
+  font-size: 1.25rem;
   box-shadow: var(--shadow-sm);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .price-tag span {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   opacity: 0.9;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .card-content {
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 .spot-name {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 800;
   color: var(--text-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   line-height: 1.3;
+  letter-spacing: -0.5px;
 }
 
 .location-info {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--bg-light);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-light);
 }
 
 .location-icon {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-top: 2px;
   flex-shrink: 0;
+  color: var(--primary-color);
 }
 
 .location-text {
-  color: var(--text-light);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: var(--text-medium);
+  font-size: 1rem;
+  line-height: 1.6;
   margin: 0;
+  font-weight: 500;
 }
 
 .availability-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .availability-item {
   background: var(--bg-light);
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   border: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+.availability-item:hover {
+  background: white;
+  box-shadow: var(--shadow-sm);
 }
 
 .availability-icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .availability-details {
@@ -396,84 +409,109 @@
 }
 
 .availability-label {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--text-light);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
+  letter-spacing: 0.75px;
+  font-weight: 700;
+  margin-bottom: 2px;
 }
 
 .availability-count {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.375rem;
+  font-weight: 800;
   color: var(--text-dark);
 }
 
-/* Card Actions */
+/* Card Actions - Enhanced */
 .card-actions {
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 2rem 2rem;
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .btn-book {
   background: var(--gradient-primary);
   color: white;
-  font-weight: 600;
-  padding: 14px 20px;
-  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 24px;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-book:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 .btn-directions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 12px 20px;
+  gap: 0.75rem;
+  padding: 14px 24px;
   font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn-directions:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-icon {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
 }
 
-/* Empty State */
+/* Empty State - Enhanced */
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   background: white;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-light);
   margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .empty-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  opacity: 0.5;
+  font-size: 5rem;
+  margin-bottom: 2rem;
+  opacity: 0.4;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .empty-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.5px;
 }
 
 .empty-description {
   color: var(--text-light);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.7;
   max-width: 500px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 2.5rem;
 }
 
 /* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -484,7 +522,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -498,10 +536,20 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 /* Desktop-First Responsive Design */
 @media (max-width: 1400px) {
   .parking-grid {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2rem;
   }
   
   .hero-content {
@@ -513,6 +561,55 @@
   .parking-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .results-header {
+    padding: 1.5rem 2rem;
+  }
+  
+  .results-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .parking-hero {
+    padding: 60px 0;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .search-container {
+    margin: 0 1.5rem;
+  }
+  
+  .search-input {
+    padding: 18px 24px 18px 60px;
+    font-size: 1rem;
+  }
+  
+  .parking-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .availability-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -521,52 +618,168 @@
   }
   
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.125rem;
   }
   
   .search-container {
-    margin: 0 20px;
+    margin: 0 1rem;
+  }
+  
+  .search-box {
+    padding: 8px;
   }
   
   .search-input {
     padding: 16px 20px 16px 50px;
-    font-size: 14px;
+    font-size: 0.95rem;
   }
   
-  .parking-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .search-icon {
+    left: 20px;
+    font-size: 1.125rem;
   }
   
-  .results-header {
+  .clear-search {
+    right: 16px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .parking-card {
+    border-radius: 16px;
+  }
+  
+  .card-header {
+    padding: 1.5rem 1.5rem 0;
     flex-direction: column;
+    gap: 1rem;
     align-items: flex-start;
-    gap: 0.5rem;
-    padding: 1rem;
   }
   
-  .results-title {
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .spot-name {
     font-size: 1.5rem;
   }
   
-  .availability-grid {
-    grid-template-columns: 1fr;
+  .location-info {
+    padding: 0.75rem;
+  }
+  
+  .availability-item {
+    padding: 1rem;
   }
   
   .card-actions {
-    grid-template-columns: 1fr;
+    padding: 0 1.5rem 1.5rem;
   }
   
   .empty-state {
-    padding: 2rem 1rem;
+    padding: 3rem 1.5rem;
   }
   
   .empty-icon {
-    font-size: 3rem;
+    font-size: 4rem;
+  }
+  
+  .empty-title {
+    font-size: 1.5rem;
+  }
+  
+  .results-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 0 1rem;
+  }
+  
+  .search-container {
+    margin: 0 0.75rem;
+  }
+  
+  .results-section .container {
+    padding: 0 1rem;
+  }
+  
+  .parking-grid {
+    gap: 1.5rem;
+  }
+  
+  .card-header {
+    padding: 1rem 1rem 0;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-actions {
+    padding: 0 1rem 1rem;
+  }
+  
+  .availability-grid {
+    gap: 0.75rem;
+  }
+  
+  .availability-item {
+    padding: 0.75rem;
+  }
+  
+  .btn-book,
+  .btn-directions {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+/* High Performance Optimizations */
+.parking-card,
+.search-box,
+.btn-book,
+.btn-directions {
+  will-change: transform;
+}
+
+/* Accessibility Improvements */
+.search-input:focus,
+.btn-book:focus,
+.btn-directions:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .parking-card,
+  .search-box,
+  .btn-book,
+  .btn-directions,
+  .clear-search {
+    transition: none;
+  }
+  
+  .parking-card:hover,
+  .search-box:focus-within,
+  .btn-book:hover,
+  .btn-directions:hover,
+  .clear-search:hover {
+    transform: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+  
+  .hero-bg {
+    animation: none;
   }
 }
