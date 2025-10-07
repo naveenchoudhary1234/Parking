@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "../styles/navbar.css";
@@ -8,6 +8,11 @@ export default function Navbar() {
   const location = useLocation();
   const { user, isAuthenticated, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch (e) { return 'light'; }
+  });
   
   const handleLogout = () => {
     logout();
@@ -21,6 +26,18 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Apply theme to html data-attribute
+  useEffect(() => {
+    try {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    } catch (e) {
+      // ignore
+    }
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
   
   return (
     <nav className="navbar">
@@ -39,6 +56,15 @@ export default function Navbar() {
         </button>
         
         <div className={`navbar-nav ${isMenuOpen ? 'active' : ''}`}>
+          {/* Theme toggle - purely visual, persists choice */}
+          <button
+            title="Toggle theme"
+            aria-label="Toggle theme"
+            onClick={toggleTheme}
+            className={`nav-btn theme-toggle-btn`}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
           <Link 
             to="/" 
             className={`nav-link ${isActive('/') ? 'active' : ''}`}

@@ -409,6 +409,18 @@
   color: var(--text-dark);
 }
 
+.availability-count.available {
+  color: #10b981; /* Green for available slots */
+}
+
+.availability-count.low {
+  color: #f59e0b; /* Orange for low availability */
+}
+
+.availability-count.full {
+  color: #ef4444; /* Red for no availability */
+}
+
 /* Card Actions */
 .card-actions {
   padding: 0 1.5rem 1.5rem;

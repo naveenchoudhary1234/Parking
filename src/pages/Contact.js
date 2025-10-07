@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { apiRequest } from '../api';
 import '../styles/contact.css';
 
 export default function Contact() {
@@ -10,6 +11,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [messageType, setMessageType] = useState('success'); // 'success' or 'error'
 
   const handleChange = (e) => {
     setFormData({
@@ -21,21 +23,44 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitMessage('');
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you for your message! We\'ll get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+    try {
+      // Validate form data
+      if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+        setSubmitMessage('Please fill in all fields.');
+        setMessageType('error');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Send contact form data to backend
+      const response = await apiRequest('/contact/send', 'POST', formData);
       
-      // Clear success message after 5 seconds
-      setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1000);
+      if (response.success) {
+        setSubmitMessage(response.message || 'Thank you for your message! We\'ll get back to you soon.');
+        setMessageType('success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setSubmitMessage(response.message || 'There was an error sending your message. Please try again.');
+        setMessageType('error');
+      }
+      
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setSubmitMessage(error.message || 'There was an error sending your message. Please try again later.');
+      setMessageType('error');
+    } finally {
+      setIsSubmitting(false);
+      
+      // Clear message after 10 seconds
+      setTimeout(() => setSubmitMessage(''), 10000);
+    }
   };
 
   return (
@@ -184,7 +209,7 @@ export default function Contact() {
                 </button>
 
                 {submitMessage && (
-                  <div className="success fade-in">
+                  <div className={`message fade-in ${messageType}`}>
                     {submitMessage}
                   </div>
                 )}
