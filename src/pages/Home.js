@@ -23,15 +23,18 @@ export default function Home() {
   }, []);
 
   const testimonials = [
-    { quote: 'ParkSmart has improved how I manage parking spaces.', author: 'Sarah Johnson', role: 'Owner', avatar: 'SJ' },
-    { quote: 'Booking is simple and reliable.', author: 'Michael Chen', role: 'Consultant', avatar: 'MC' },
-    { quote: 'Great dashboard and analytics for owners.', author: 'Emma Rodriguez', role: 'Manager', avatar: 'ER' }
+    { quote: 'ParkSmart has completely transformed how I manage my parking spaces. The analytics dashboard gives me real-time insights into revenue and occupancy.', author: 'Sarah Johnson', role: 'Property Owner', avatar: 'SJ' },
+    { quote: 'As a frequent traveler, finding reliable parking used to be a nightmare. Now I can book ahead and have peace of mind every time I park.', author: 'Michael Chen', role: 'Business Consultant', avatar: 'MC' },
+    { quote: 'The platform is incredibly intuitive and the customer support team is always responsive. Best parking solution I\'ve used.', author: 'Emma Rodriguez', role: 'Facility Manager', avatar: 'ER' }
   ];
 
   const features = [
-    { title: 'Smart Location Matching', description: 'Find the best spots using real-time availability.' },
-    { title: 'Instant Booking', description: 'Reserve a spot in seconds with instant confirmation.' },
-    { title: 'Secure Payments', description: 'Multiple payment options with enterprise-grade security.' }
+    { title: 'Smart Location Matching', description: 'Find the best spots using real-time availability and AI-powered recommendations.', icon: '🎯' },
+    { title: 'Instant Booking', description: 'Reserve a spot in seconds with instant confirmation and digital access.', icon: '⚡' },
+    { title: 'Secure Payments', description: 'Multiple payment options with enterprise-grade security and fraud protection.', icon: '🔒' },
+    { title: '24/7 Support', description: 'Round-the-clock customer support to help you whenever you need assistance.', icon: '💬' },
+    { title: 'Flexible Pricing', description: 'Dynamic pricing that adapts to demand, with hourly and daily options available.', icon: '💰' },
+    { title: 'Green Parking', description: 'Find eco-friendly parking spots with EV charging stations included.', icon: '🌱' }
   ];
 
   return (
@@ -59,9 +62,9 @@ export default function Home() {
             </div>
 
             <div className="hero-stats">
-              <div className="stat-item"><span className="stat-number">2,500+</span><span className="stat-label">Active Properties</span></div>
-              <div className="stat-item"><span className="stat-number">15,000+</span><span className="stat-label">Happy Users</span></div>
-              <div className="stat-item"><span className="stat-number">99.8%</span><span className="stat-label">Uptime Guarantee</span></div>
+              <div className="stat-item"><span className="stat-number">5,000+</span><span className="stat-label">Active Properties</span></div>
+              <div className="stat-item"><span className="stat-number">25,000+</span><span className="stat-label">Happy Users</span></div>
+              <div className="stat-item"><span className="stat-number">99.9%</span><span className="stat-label">Uptime Guarantee</span></div>
             </div>
           </div>
 
@@ -83,7 +86,7 @@ export default function Home() {
           </div>
           <div className="features-grid">
             {features.map((f, i) => (
-              <div key={i} className="feature-card hover-lift"><div className="feature-icon">•</div><h3>{f.title}</h3><p>{f.description}</p></div>
+              <div key={i} className="feature-card hover-lift"><div className="feature-icon">{f.icon}</div><h3>{f.title}</h3><p>{f.description}</p></div>
             ))}
           </div>
         </div>

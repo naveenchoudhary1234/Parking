@@ -19,9 +19,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
-  color: #1a202c;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--text-primary);
+  background: var(--background);
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {
@@ -31,14 +32,14 @@ code {
 
 /* Global CSS Variables */
 :root {
-  /* Colors */
-  --primary-color: #667eea;
-  --primary-dark: #5a67d8;
-  --primary-light: #e6fffa;
-  --secondary-color: #764ba2;
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #4facfe 100%);
-  --accent-color: #f093fb;
+  /* Colors - Modern Blue/Teal Theme */
+  --primary-color: #0ea5e9;
+  --primary-dark: #0284c7;
+  --primary-light: #e0f2fe;
+  --secondary-color: #06b6d4;
+  --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --accent-color: #14b8a6;
   --success-color: #48bb78;
   --warning-color: #ed8936;
   --error-color: #f56565;
@@ -107,18 +108,20 @@ code {
 
 /* Theme overrides: dark theme when [data-theme="dark"] is set on <html> */
 [data-theme="dark"] {
-  --primary-color: #7c93f5;
-  --primary-dark: #6b7fe0;
-  --secondary-color: #5b3e7d;
-  --accent-color: #9be7ff;
-  --background: #0b1220;
-  --background-light: #0f1724;
-  --background-dark: #071024;
-  --text-primary: #e6eef8;
-  --text-secondary: #c6d2e6;
+  --primary-color: #22d3ee;
+  --primary-dark: #06b6d4;
+  --secondary-color: #38bdf8;
+  --accent-color: #2dd4bf;
+  --background: #0f172a;
+  --background-light: #1e293b;
+  --background-dark: #020617;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
   --text-light: #94a3b8;
-  --border-color: rgba(255,255,255,0.06);
-  --border-light: rgba(255,255,255,0.04);
+  --border-color: rgba(255,255,255,0.1);
+  --border-light: rgba(255,255,255,0.05);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.5);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.6);
 }
 
 /* Floating label form pattern (works with modern browsers) */

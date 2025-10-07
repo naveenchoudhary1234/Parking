@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--background);
+  transition: background-color 0.3s ease;
 }
 
 .main-content {
@@ -35,12 +36,16 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+  background: rgba(15, 23, 42, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .loading-overlay {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .loading-spinner {
@@ -83,11 +88,12 @@ body {
 }
 
 .toast {
-  background: white;
+  background: var(--background);
   border-radius: 12px;
   padding: 1rem 1.5rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--primary-color);
+  color: var(--text-primary);
   min-width: 300px;
   max-width: 400px;
   transform: translateX(100%);
@@ -258,7 +264,11 @@ select:focus {
 .form-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+[data-theme="dark"] .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
 }
 
 .form-input.error {

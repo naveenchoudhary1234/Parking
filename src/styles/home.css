@@ -10,8 +10,13 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #14b8a6 100%);
   padding: 0 40px;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, #0c4a6e 0%, #164e63 50%, #115e59 100%);
 }
 
 .hero-section::before {
@@ -53,12 +58,19 @@
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #f093fb, #f5576c, #4facfe);
+  background: linear-gradient(45deg, #06b6d4, #14b8a6, #0ea5e9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 200%;
   animation: gradientShift 3s ease-in-out infinite;
+}
+
+[data-theme="dark"] .gradient-text {
+  background: linear-gradient(45deg, #22d3ee, #2dd4bf, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 @keyframes gradientShift {
@@ -162,9 +174,10 @@
 /* Features Section - Enhanced Desktop Layout */
 .features-section {
   padding: 120px 0;
-  background: var(--bg-light);
+  background: var(--background-light);
   width: 100%;
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 .features-section::before {
@@ -219,11 +232,11 @@
 }
 
 .feature-card {
-  background: white;
+  background: var(--background);
   padding: 3rem 2.5rem;
   border-radius: 24px;
   box-shadow: var(--shadow-md);
-  transition: var(--transition);
+  transition: all 0.3s ease;
   text-align: center;
   border: 1px solid var(--border-light);
   position: relative;
@@ -274,8 +287,9 @@
 /* How It Works Section - Enhanced */
 .how-it-works-section {
   padding: 120px 0;
-  background: white;
+  background: var(--background);
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 .how-it-works-section::before {
@@ -422,7 +436,8 @@
 /* Testimonials Section - New */
 .testimonials-section {
   padding: 120px 0;
-  background: var(--bg-light);
+  background: var(--background-light);
+  transition: background-color 0.3s ease;
 }
 
 .testimonials-grid {
@@ -433,11 +448,11 @@
 }
 
 .testimonial-card {
-  background: white;
+  background: var(--background);
   padding: 3rem 2.5rem;
   border-radius: 24px;
   box-shadow: var(--shadow-md);
-  transition: var(--transition);
+  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -499,11 +514,16 @@
 /* CTA Section - Enhanced */
 .cta-section {
   padding: 120px 0;
-  background: var(--gradient-secondary);
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   text-align: center;
   color: white;
   position: relative;
   overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .cta-section {
+  background: linear-gradient(135deg, #1e40af 0%, #6b21a8 100%);
 }
 
 .cta-section::before {
@@ -543,7 +563,8 @@
 /* Newsletter Section - New */
 .newsletter-section {
   padding: 100px 0;
-  background: white;
+  background: var(--background);
+  transition: background-color 0.3s ease;
 }
 
 .newsletter-content {
