@@ -17,9 +17,14 @@
 
 .profile-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
   padding: 2rem 1rem;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .profile-container {
+  background: linear-gradient(135deg, #312e81 0%, #581c87 50%, #be185d 100%);
 }
 
 /* Loading and Error States */
@@ -72,14 +77,20 @@
   align-items: center;
   gap: 2rem;
   color: white;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.profile-header:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
 }
 
 .user-avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: var(--gradient-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +98,12 @@
   font-weight: 700;
   color: white;
   flex-shrink: 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .avatar-text {
@@ -146,14 +162,22 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: var(--gradient-primary);
   color: white;
-  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.6);
+}
+
+[data-theme="dark"] .btn-primary {
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.5);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 0 10px 30px rgba(129, 140, 248, 0.7);
 }
 
 .btn-secondary {
@@ -202,9 +226,9 @@
 }
 
 .quick-action:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .action-icon {
@@ -244,9 +268,9 @@
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.05);
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .stat-icon {
@@ -343,7 +367,8 @@
 
 .activity-item:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateX(5px);
+  transform: translateX(10px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .activity-icon {
@@ -393,7 +418,8 @@
 
 .booking-item:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .booking-info {

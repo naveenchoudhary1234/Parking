@@ -1,8 +1,13 @@
 /* Owner Dashboard Styles */
 .owner-dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   padding: 20px 0;
+  transition: background 0.3s ease;
+}
+
+[data-theme="dark"] .owner-dashboard {
+  background: linear-gradient(135deg, #312e81 0%, #581c87 100%);
 }
 
 /* Header */
@@ -27,7 +32,7 @@
   margin: 0 0 8px 0;
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -764,15 +769,29 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   background: white;
-  color: #333 !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary) !important;
 }
 
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+[data-theme="dark"] .form-input:focus,
+[data-theme="dark"] .form-select:focus,
+[data-theme="dark"] .form-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
 }
 
 .form-textarea {
@@ -981,7 +1000,7 @@
 .submit-btn {
   width: 100%;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--gradient-primary);
   color: white;
   border: none;
   border-radius: 12px;
@@ -990,11 +1009,20 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 2rem;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+[data-theme="dark"] .submit-btn {
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
 }
 
 .submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="dark"] .submit-btn:hover:not(:disabled) {
+  box-shadow: 0 8px 25px rgba(129, 140, 248, 0.5);
 }
 
 .submit-btn:disabled {
@@ -1093,7 +1121,7 @@
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1174,9 +1202,13 @@
 }
 
 .property-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-  border-color: #667eea;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(99, 102, 241, 0.25);
+  border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .property-card:hover {
+  box-shadow: 0 20px 50px rgba(129, 140, 248, 0.3);
 }
 
 .property-image {
@@ -1383,14 +1415,18 @@
 }
 
 .view-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--gradient-primary);
   color: white;
-  border: 2px solid #667eea;
+  border: 2px solid var(--primary-color);
 }
 
 .view-btn:hover {
-  background: linear-gradient(135deg, #5a67d8, #667eea);
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+}
+
+[data-theme="dark"] .view-btn:hover {
+  box-shadow: 0 4px 20px rgba(129, 140, 248, 0.5);
 }
 
 .delete-btn {
