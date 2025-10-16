@@ -31,10 +31,22 @@ export default function ParkingCards() {
   const fetchParkingSpots = async () => {
     try {
       setLoading(true);
-      const response = await apiRequest('/parking-property/approved');
-      setParkingSpots(response);
+      // Use the enhanced getAllProperties endpoint that includes availability
+      const response = await apiRequest('/parking-property/search-all');
+      console.log("🏢 Loaded parking properties with availability:", response);
+      
+      // Filter only approved properties with available slots
+      const approvedAndAvailable = response.filter(spot => 
+        spot.approved && (
+          (spot.availability?.carSlots?.available > 0) || 
+          (spot.availability?.bikeSlots?.available > 0)
+        )
+      );
+      
+      setParkingSpots(approvedAndAvailable);
       setError("");
     } catch (err) {
+      console.error("❌ Error fetching parking spots:", err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -169,16 +181,26 @@ export default function ParkingCards() {
                     <div className="availability-item">
                       <div className="availability-icon">🚗</div>
                       <div className="availability-details">
-                        <span className="availability-label">Car Spots</span>
-                        <span className="availability-count">{spot.carSlots || 0}</span>
+                        <span className="availability-label">Cars Available</span>
+                        <span className={`availability-count ${
+                          (spot.availability?.carSlots?.available || 0) === 0 ? 'full' : 
+                          (spot.availability?.carSlots?.available || 0) <= 2 ? 'low' : 'available'
+                        }`}>
+                          {spot.availability?.carSlots?.available || 0}/{spot.availability?.carSlots?.total || spot.carSlots || 0}
+                        </span>
                       </div>
                     </div>
                     
                     <div className="availability-item">
                       <div className="availability-icon">🏍️</div>
                       <div className="availability-details">
-                        <span className="availability-label">Bike Spots</span>
-                        <span className="availability-count">{spot.bikeSlots || 0}</span>
+                        <span className="availability-label">Bikes Available</span>
+                        <span className={`availability-count ${
+                          (spot.availability?.bikeSlots?.available || 0) === 0 ? 'full' : 
+                          (spot.availability?.bikeSlots?.available || 0) <= 2 ? 'low' : 'available'
+                        }`}>
+                          {spot.availability?.bikeSlots?.available || 0}/{spot.availability?.bikeSlots?.total || spot.bikeSlots || 0}
+                        </span>
                       </div>
                     </div>
                   </div>

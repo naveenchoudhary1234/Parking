@@ -1,18 +1,27 @@
 import React from 'react';
 import '../styles/about.css';
+import '../styles/home.css';
 
 export default function About() {
   return (
-    <div className="about-page">
-      {/* Hero Section */}
-      <section className="about-hero">
-        <div className="container">
-          <div className="about-hero-content">
-            <h1 className="about-title">About <span className="gradient-text">ParkEasy</span></h1>
-            <p className="about-subtitle">
+    <div className="about-page home-container">
+      {/* Hero Section - use Home hero classes for consistent look */}
+      <section className="hero-section about-hero">
+        <div className="hero-content">
+          <div className="hero-text about-hero-content">
+            <h1 className="hero-title">About <span className="gradient-text">ParkEasy</span></h1>
+            <p className="hero-subtitle about-subtitle">
               Revolutionizing parking solutions through technology, connecting people with 
               perfect parking spots anytime, anywhere.
             </p>
+          </div>
+
+          <div className="hero-visual">
+            <img
+              src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80"
+              alt="Smart parking illustration"
+              className="hero-image"
+            />
           </div>
         </div>
       </section>

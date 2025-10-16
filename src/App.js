@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -15,23 +16,27 @@ import OtpVerify from "./pages/OtpVerify";
 import OwnerDashboard from "./pages/NewOwnerDashboard";
 import RentalDashboard from "./pages/RentalDashboard";
 import ParkingCards from "./pages/ParkingCards";
+import ParkingDetails from "./pages/ParkingDetails";
+import Parking from "./pages/Parking";
 import ParkingMap from "./pages/ParkingMap";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import './index.css';
 
 function App() {
 
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
-        <div className="main-content">
+        <div className="app">
+          <Navbar />
+          <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/parking" element={<ParkingCards />} />
+            <Route path="/parking" element={<Parking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -51,8 +56,12 @@ function App() {
                 <RoleBasedRoute allowedRole="owner" component={OwnerDashboard} />
               </ProtectedRoute>
             } />
+            <Route path="/parking-cards" element={<ParkingCards />} />
+            <Route path="/parking-details/:id" element={<ProtectedRoute><ParkingDetails /></ProtectedRoute>} />
             <Route path="/map" element={<ParkingMap />} />
           </Routes>
+          </div>
+          <Footer />
         </div>
       </Router>
     </AuthProvider>

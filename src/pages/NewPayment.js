@@ -53,8 +53,8 @@ export default function Payment() {
   };
 
   const calculateTotal = () => {
-    if (selectedSlot && hours) {
-      return selectedSlot.pricePerHour * hours;
+    if (selectedSlot && hours && property) {
+      return property.pricePerHour * hours;
     }
     return 0;
   };
@@ -143,17 +143,58 @@ export default function Payment() {
   };
 
   const openNavigation = () => {
-    if (navigator.geolocation && property) {
+    console.log("🗺️ Opening navigation for property:", property);
+    console.log("📍 Property location data:", property?.location);
+    
+    if (!property) {
+      alert("Property information not available for navigation.");
+      return;
+    }
+
+    // Check if we have valid coordinates
+    const coordinates = property.location?.coordinates;
+    if (!coordinates || !Array.isArray(coordinates) || coordinates.length !== 2) {
+      console.error("❌ Invalid coordinates for property:", property);
+      
+      // Try using fullAddress or address as fallback
+      const address = property.fullAddress || property.address;
+      if (address && address.trim()) {
+        const encodedAddress = encodeURIComponent(address);
+        console.log("🗺️ Using address fallback:", address);
+        window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, "_blank");
+        return;
+      }
+      
+      alert("Navigation information not available for this property. Location coordinates are missing.");
+      return;
+    }
+
+    if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          const googleMapsUrl = `https://www.google.com/maps/dir/${latitude},${longitude}/${property.location.coordinates[1]},${property.location.coordinates[0]}`;
+          const [propLng, propLat] = coordinates;
+          console.log("🧭 Navigating from:", latitude, longitude);
+          console.log("🎯 Navigating to:", propLat, propLng);
+          
+          const googleMapsUrl = `https://www.google.com/maps/dir/${latitude},${longitude}/${propLat},${propLng}`;
           window.open(googleMapsUrl, '_blank');
         },
         (error) => {
-          alert("Unable to get your location. Please enable location services.");
+          console.error("❌ Geolocation error:", error);
+          // Fallback to destination-only navigation
+          const [propLng, propLat] = coordinates;
+          console.log("🗺️ Using destination-only navigation to:", propLat, propLng);
+          const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${propLat},${propLng}`;
+          window.open(googleMapsUrl, '_blank');
         }
       );
+    } else {
+      // Browser doesn't support geolocation, use destination-only
+      const [propLng, propLat] = coordinates;
+      console.log("🗺️ Browser doesn't support geolocation, using destination-only:", propLat, propLng);
+      const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${propLat},${propLng}`;
+      window.open(googleMapsUrl, '_blank');
     }
   };
 
@@ -205,7 +246,7 @@ export default function Payment() {
                 <div className="text-sm text-gray-600">
                   {slot.type === 'car' ? '🚗' : '🏍️'} {slot.type.charAt(0).toUpperCase() + slot.type.slice(1)}
                 </div>
-                <div className="text-green-600 font-bold">₹{slot.pricePerHour}/hour</div>
+                <div className="text-green-600 font-bold">₹{property?.pricePerHour || slot.pricePerHour}/hour</div>
               </div>
             ))}
           </div>
@@ -237,7 +278,7 @@ export default function Payment() {
           <div className="space-y-1">
             <p>Slot: {selectedSlot.slotNumber} ({selectedSlot.type})</p>
             <p>Duration: {hours} hour{hours > 1 ? 's' : ''}</p>
-            <p>Rate: ₹{selectedSlot.pricePerHour}/hour</p>
+            <p>Rate: ₹{property.pricePerHour}/hour</p>
             <hr className="my-2" />
             <p className="text-xl font-bold text-green-600">
               Total: ₹{calculateTotal()}
